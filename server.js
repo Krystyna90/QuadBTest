@@ -1,29 +1,19 @@
-const fetchDataFromAPI = require ('./dataFetcher/fetchDataFromAPI.js')
+const pool = require('./model/poolModel.js')
 const {server} = require ('./app')
-const {Pool} = require('pg')
+const fetchDataFromAPI = require ('./dataFetcher/fetchDataFromAPI.js')
 
 require('dotenv').config()
 
-const { DB_PASSWORD, DB_PORT, PORT = 4001 } = process.env
-
-const pool = new Pool({
-    user: 'postgres',
-    host: 'localhost',
-    database: 'krystynadb',
-    password: DB_PASSWORD,
-    port: DB_PORT
-  })
+const {PORT} = process.env
 
 pool.connect()
 .then(() => {
     server.listen(PORT, () => {
-        console.log('Server is on the 4001 port')
+        console.log('Server is on the 5500 port')
       });
-      fetchDataFromAPI(pool)
+    fetchDataFromAPI(pool)
 })
 .catch((error) => {
     console.log(error.message)
     process.exit(1)
 })
-
-module.exports = {pool}
