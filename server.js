@@ -1,3 +1,4 @@
+const fetchDataFromAPI = require ('./dataFetcher/fetchDataFromAPI.js')
 const {server} = require ('./app')
 const {Pool} = require('pg')
 
@@ -18,8 +19,11 @@ pool.connect()
     server.listen(PORT, () => {
         console.log('Server is on the 4001 port')
       });
+      fetchDataFromAPI(pool)
 })
 .catch((error) => {
     console.log(error.message)
     process.exit(1)
 })
+
+module.exports = {pool}
