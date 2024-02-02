@@ -1,4 +1,4 @@
-const {pool} = require ('../server');
+const pool = require('../model/poolModel')
 
 const tickerData = async (req, res) => {
    try {
