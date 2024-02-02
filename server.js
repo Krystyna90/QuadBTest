@@ -9,7 +9,7 @@ const {PORT} = process.env
 pool.connect()
 .then(() => {
     server.listen(PORT, () => {
-        console.log('Server is on the 5500 port')
+        console.log('Server is on the 5501 port')
       });
     fetchDataFromAPI(pool)
 })
