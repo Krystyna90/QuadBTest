@@ -21,9 +21,10 @@ async function fetchDataFromAPI(pool) {
          }));
     } catch (error) {
         throw error;
-    } finally {
-        await pool.end();
     }
+    // } finally {
+    //     await pool.end();
+    // }
 }
 
 module.exports = fetchDataFromAPI
